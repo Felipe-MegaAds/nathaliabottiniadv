@@ -372,8 +372,9 @@ svg{ display: block; }
   padding-left: clamp(24px, 8vw, 150px);
   padding-right: 24px;
 }
+/* Largura do container do hero ajustada para comportar títulos mais amplos */
 .hero-copy{
-  max-width: 620px;
+  max-width: 680px;
   text-align: left;
 }
 .hero-sub{ text-align: left; }
@@ -403,11 +404,12 @@ svg{ display: block; }
   color: var(--white);
   letter-spacing: .01em;
 }
+/* Estilo e largura do parágrafo de apoio do hero */
 .hero-sub{
   margin-top: 22px;
   font-size: 18px;
   color: var(--muted);
-  max-width: 520px;
+  max-width: 600px;
   line-height: 1.8;
   font-weight: 300;
 }
