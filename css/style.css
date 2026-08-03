@@ -313,6 +313,15 @@ svg{ display: block; }
 .header-cta{ display: flex; align-items: center; gap: 18px; }
 .header-cta .btn{ padding: 13px 26px; font-size: 12px; }
 
+/* Oculta o botão CTA mobile por padrão em telas grandes */
+.mobile-nav-cta{ display: none; }
+
+/* Desativa o backdrop-filter do header ao abrir o menu mobile para evitar restrição de posicionamento fixo */
+.header.menu-open{
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 .nav-toggle{
   display: none;
   width: 44px; height: 44px;
@@ -1057,28 +1066,70 @@ svg{ display: block; }
 }
 
 @media (max-width: 860px){
-  .nav-links, .header-cta{ display: none; }
+  /* Oculta elementos do cabeçalho de desktop */
+  .header-cta{ display: none; }
   .brand-text{ display: none; }
-  .nav-toggle{ display: flex; }
-  .brand-logo{ height: 72px; }
-  .header.is-scrolled .brand-logo{ height: 58px; }
 
+  /* Ajusta z-index do botão hambúrguer e da marca para ficarem visíveis sobre a cortina do menu */
+  .brand{ position: relative; z-index: 10002; }
+  .nav-toggle{ display: flex; position: relative; z-index: 10002; }
+  .brand-logo{ height: 48px; }
+  .header.is-scrolled .brand-logo{ height: 40px; }
+
+  /* Estilização da cortina do menu mobile recolhível com fundo preto 100% opaco */
   .nav-links{
+    display: none;
     position: fixed;
-    inset: 0;
     top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
     flex-direction: column;
     justify-content: center;
-    gap: 34px;
-    background: rgba(5,5,5,.98);
-    backdrop-filter: blur(16px);
+    align-items: center;
+    gap: 20px;
+    padding: 90px 24px 40px;
+    /* Fundo preto totalmente sólido e opaco sem transparência */
+    background: #050505 !important;
+    background-color: #050505 !important;
     transform: translateY(-100%);
     opacity: 0;
     transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
-    z-index: 400;
+    z-index: 10000;
+    overflow-y: auto;
   }
-  .nav-links.is-open{ display: flex; transform: translateY(0); opacity: 1; }
-  .nav-links a{ font-size: 20px; }
+
+  /* Exibe o menu quando a classe .is-open é ativada pelo JS */
+  .nav-links.is-open{
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Estilização dos links no menu mobile */
+  .nav-links a{
+    font-family: var(--font-serif);
+    font-size: 22px;
+    letter-spacing: .06em;
+    font-weight: 500;
+    color: var(--off-white);
+    padding: 6px 12px;
+    transition: color var(--dur-fast) var(--ease-soft);
+  }
+  .nav-links a:hover,
+  .nav-links a:active{
+    color: var(--gold);
+  }
+
+  /* Exibe o botão de CTA para WhatsApp no menu mobile */
+  .mobile-nav-cta{
+    display: block;
+    margin-top: 14px;
+  }
+  .mobile-nav-cta .btn{
+    padding: 14px 28px;
+    font-size: 13px;
+  }
 
   .cta-inner{ text-align: center; justify-content: center; flex-direction: column; }
   .cta-actions{ justify-content: center; }
