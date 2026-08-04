@@ -359,7 +359,7 @@ svg{ display: block; }
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(5,5,5,.86) 0%, rgba(5,5,5,.62) 34%, rgba(5,5,5,.16) 58%, rgba(5,5,5,.4) 100%),
-    url('../assets/hero.png') center right / cover no-repeat,
+    url('../assets/hero-nat.png') center right / cover no-repeat,
     var(--black);
 }
 .hero::before{
@@ -1157,7 +1157,7 @@ svg{ display: block; }
     aspect-ratio: 4 / 4.55;
     background-image:
       linear-gradient(180deg, transparent 74%, rgba(5,5,5,.95) 100%),
-      url('../assets/mobile.png');
+      url('../assets/mobile-nat.png');
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
